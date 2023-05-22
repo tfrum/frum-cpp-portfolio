@@ -89,25 +89,26 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram) {
 void Student::print(const std::string& variableName) const {
     if (variableName.empty()) {
         // Print all variables
-        std::cout << "Student ID: " << studentID << std::endl;
-        std::cout << "First Name: " << firstName << std::endl;
-        std::cout << "Last Name: " << lastName << std::endl;
-        std::cout << "Email Address: " << emailAddress << std::endl;
-        std::cout << "Age: " << studentAge << std::endl;
-        std::cout << "Course Completion Days: "
-                  << daysInCourse1 << ", "
-                  << daysInCourse2 << ", "
-                  << daysInCourse3 << std::endl;
+        std::cout << "Student ID:\t" << studentID << "\t"
+                  << "First Name:\t" << firstName << "\t"
+                  << "Last Name:\t" << lastName << "\t"
+                  << "Email Address:\t" << emailAddress << "\t"
+                  << "Age:\t" << studentAge << "\t"
+                  << "Days in Course:\t" << daysInCourse1 << ", "
+                  << daysInCourse2 << ", " << daysInCourse3 << "\t"
+                  << "Degree Program:\t";
+
         switch (degreeProgram) {
             case SECURITY:
-                std::cout << "Degree Program: SECURITY" << std::endl;
+                std::cout << "SECURITY";
                 break;
             case NETWORK:
-                std::cout << "Degree Program: NETWORK" << std::endl;
+                std::cout << "NETWORK";
                 break;
             case SOFTWARE:
-                std::cout << "Degree Program: SOFTWARE" << std::endl;
-                break;}
+                std::cout << "SOFTWARE";
+                break;
+        }
         std::cout << std::endl;
     } else {
         // take a string of a variable name and output just that info

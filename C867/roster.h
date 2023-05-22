@@ -23,6 +23,10 @@ class Roster {
         // destructor
         ~Roster();
 
+        //getter for classRosterArray
+        Student** getClassRosterArray();
+
+
         // this is how we add students (), it calls add()
         void parseAndAddStudent(const std::string& studentData);
         //this is our adding function
@@ -37,8 +41,16 @@ class Roster {
                 DegreeProgram degreeProgram);
 
         // a quick print function that prints using the student class print function
+        void remove(const std::string& studentID);
+
+        void printAverageDaysInCourse(const std::string& studentID) const;
+
         void printAll() const;
         
+        void printInvalidEmails() const;
+
+        void printByDegreeProgram(DegreeProgram degreeProgram) const;
+
 
 };
 #endif
