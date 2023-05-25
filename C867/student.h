@@ -17,9 +17,7 @@ private:
     std::string     lastName;
     std::string     emailAddress;
     int             studentAge;
-    int             daysInCourse1;
-    int             daysInCourse2;
-    int             daysInCourse3;
+    std::array<int, 3> daysInCourse;
     DegreeProgram   degreeProgram;
 
 public:
@@ -29,9 +27,7 @@ public:
             std::string     lastName,
             std::string     emailAddress,
             int             studentAge,
-            int             daysInCourse1,
-            int             daysInCourse2,
-            int             daysInCourse3,
+            std::array<int, 3> daysInCourse,
             DegreeProgram   degreeProgram);
 
     //getter function definitions
@@ -40,9 +36,7 @@ public:
     std::string     getLastName() const;
     std::string     getEmailAddress() const;
     int             getStudentAge() const;
-    int             getDaysInCourse1() const;
-    int             getDaysInCourse2() const;
-    int             getDaysInCourse3() const;
+    std::array<int, 3> getDaysInCourse() const;
     DegreeProgram   getDegreeProgram() const;
 
     // setter function definitions
@@ -51,9 +45,7 @@ public:
     void setLastName       (const std::string& lastName);
     void setEmailAddress   (const std::string& emailAddress);
     void setStudentAge     (int studentAge);
-    void setDaysInCourse1  (int daysInCourse1);
-    void setDaysInCourse2  (int daysInCourse2);
-    void setDaysInCourse3  (int daysInCourse3);
+    void setDaysInCourse   (std::array<int, 3> daysInCourse);
     void setDegreeProgram  (DegreeProgram degreeProgram);
 
     // print function definition

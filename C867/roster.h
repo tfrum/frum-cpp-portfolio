@@ -31,14 +31,12 @@ class Roster {
         void parseAndAddStudent(const std::string& studentData);
         //this is our adding function
         void add(const std::string& studentID,
-                const std::string& firstName,
-                const std::string& lastName,
-                const std::string& emailAddress,
-                int age,
-                int daysInCourse1,
-                int daysInCourse2,
-                int daysInCourse3,
-                DegreeProgram degreeProgram);
+                 const std::string& firstName,
+                 const std::string& lastName,
+                 const std::string& emailAddress,
+                 int age,
+                 std::array<int, 3> daysInCourse,
+                 DegreeProgram degreeProgram);
 
         // a quick print function that prints using the student class print function
         void remove(const std::string& studentID);

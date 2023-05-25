@@ -11,18 +11,14 @@ Student::Student(std::string studentID,
                  std::string lastName,
                  std::string emailAddress,
                  int studentAge,
-                 int daysInCourse1,
-                 int daysInCourse2,
-                 int daysInCourse3,                 
+                 const std::array<int, 3> daysInCourse,
                  DegreeProgram degreeProgram)
           : studentID(studentID),
             firstName(firstName),
             lastName(lastName),
             emailAddress(emailAddress),
             studentAge(studentAge),
-            daysInCourse1(daysInCourse1),
-            daysInCourse2(daysInCourse2),
-            daysInCourse3(daysInCourse3),
+            daysInCourse(daysInCourse),
             degreeProgram(degreeProgram) {};
     
 
@@ -39,18 +35,14 @@ std::string Student::getLastName() const {
 std::string Student::getEmailAddress() const {
     return emailAddress;
 }
+
 int Student::getStudentAge() const {
     return studentAge;
 }
-int Student::getDaysInCourse1() const {
-    return daysInCourse1;
+std::array<int, 3> Student::getDaysInCourse() const {
+    return daysInCourse;
 }
-int Student::getDaysInCourse2() const {
-    return daysInCourse2;
-}
-int Student::getDaysInCourse3() const {
-    return daysInCourse3;
-}
+
 DegreeProgram Student::getDegreeProgram() const {
     return degreeProgram;
 }
@@ -72,14 +64,8 @@ void Student::setEmailAddress(const std::string& emailAddress) {
 void Student::setStudentAge(int studentAge) {
     this->studentAge = studentAge;
 }
-void Student::setDaysInCourse1(int daysInCourse1) {
-    this->daysInCourse1 = daysInCourse1;
-}
-void Student::setDaysInCourse2(int daysInCourse2) {
-    this->daysInCourse2 = daysInCourse2;
-}
-void Student::setDaysInCourse3(int daysInCourse3) {
-    this->daysInCourse3 = daysInCourse3;
+void Student::setDaysInCourse(std::array<int, 3> daysInCourse) {
+    this->daysInCourse = std::move(daysInCourse);
 }
 void Student::setDegreeProgram(DegreeProgram degreeProgram) {
     this->degreeProgram = degreeProgram;
@@ -94,8 +80,8 @@ void Student::print(const std::string& variableName) const {
                   << "Last Name:\t" << lastName << "\t"
                   << "Email Address:\t" << emailAddress << "\t"
                   << "Age:\t" << studentAge << "\t"
-                  << "Days in Course:\t" << daysInCourse1 << ", "
-                  << daysInCourse2 << ", " << daysInCourse3 << "\t"
+                  << "Days in Course:\t" << daysInCourse[0] << ", "
+                  << daysInCourse[1] << ", " << daysInCourse[2] << "\t"
                   << "Degree Program:\t";
 
         switch (degreeProgram) {
@@ -126,9 +112,9 @@ void Student::print(const std::string& variableName) const {
             std::cout << "Age: " << studentAge << std::endl;
         } else if (variableName == "courseCompletionDays") {
             std::cout << "Course Completion Days: "
-                      << daysInCourse1 << ", "
-                      << daysInCourse2 << ", "
-                      << daysInCourse3 << std::endl;
+                      << daysInCourse[0] << ", "
+                      << daysInCourse[1] << ", "
+                      << daysInCourse[2] << std::endl;
 
         } else if (variableName == "degreeProgram") {
             // this would be preferrable to extract out as a function but we won't.

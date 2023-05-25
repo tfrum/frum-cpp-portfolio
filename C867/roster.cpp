@@ -36,14 +36,15 @@ void Roster::parseAndAddStudent(const std::string& studentData) {
         studentInfo[index++] = token;
     }
 
-    std::string studentID    = studentInfo[0];
-    std::string firstName    = studentInfo[1];
-    std::string lastName     = studentInfo[2];
-    std::string emailAddress = studentInfo[3];
-    int studentAge           = std::stoi(studentInfo[4]);
-    int daysInCourse1        = std::stoi(studentInfo[5]);
-    int daysInCourse2        = std::stoi(studentInfo[6]);
-    int daysInCourse3        = std::stoi(studentInfo[7]);
+    std::string studentID             = studentInfo[0];
+    std::string firstName             = studentInfo[1];
+    std::string lastName              = studentInfo[2];
+    std::string emailAddress          = studentInfo[3];
+    int studentAge                    = std::stoi(studentInfo[4]);
+    std::array<int, 3> daysInCourse;
+    daysInCourse[0]                   = std::stoi(studentInfo[5]);
+    daysInCourse[1]                   = std::stoi(studentInfo[6]);
+    daysInCourse[2]                   = std::stoi(studentInfo[7]);
 
     DegreeProgram degreeProgram;
     if (studentInfo[8] == "SECURITY") {
@@ -59,9 +60,7 @@ void Roster::parseAndAddStudent(const std::string& studentData) {
         lastName,
         emailAddress,
         studentAge,
-        daysInCourse1,
-        daysInCourse2,
-        daysInCourse3,
+        daysInCourse,
         degreeProgram);
 }
 
@@ -70,18 +69,14 @@ void Roster::add(const std::string& studentID,
                  const std::string& lastName,
                  const std::string& emailAddress,
                  int age,
-                 int daysInCourse1,
-                 int daysInCourse2,
-                 int daysInCourse3,
+                 std::array<int, 3> daysInCourse,
                  DegreeProgram degreeProgram) {
     Student* student = new Student(studentID, 
                                   firstName, 
                                   lastName, 
                                   emailAddress, 
                                   age, 
-                                  daysInCourse1, 
-                                  daysInCourse2, 
-                                  daysInCourse3, 
+                                  daysInCourse, 
                                   degreeProgram);
 
     classRosterArray[++lastIndex] = student;
@@ -125,9 +120,8 @@ void Roster::printAverageDaysInCourse(const std::string& studentID) const {
     for (int i = 0; i <= lastIndex; ++i) {
         if (classRosterArray[i]->getStudentID() == studentID) {
             found = true;
-            totalDays = classRosterArray[i]->getDaysInCourse1() +
-                        classRosterArray[i]->getDaysInCourse2() +
-                        classRosterArray[i]->getDaysInCourse3();
+            std::array<int, 3> daysInCourse = classRosterArray[i]->getDaysInCourse();
+            totalDays = daysInCourse[0] + daysInCourse[1] + daysInCourse[2];
             break;
         }
     }
@@ -162,7 +156,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) const {
 }
 
 // roster printAll. Passes empty string to student::print().
-// this function was designed to have more functionality than is  there at the moment
+// this function was designed to have more functionality than is there at the moment
 void Roster::printAll() const {
     for (int i = 0; i <= lastIndex; ++i) {
         // this passes a blank string because I designed the student::print() function
